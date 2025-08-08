@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración básica del documento HTML -->
+    <meta charset="UTF-8"> <!-- Codificación de caracteres UTF-8 para soporte completo de caracteres especiales -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configuración responsive para dispositivos móviles -->
+    <title>Mi Portafolio - Desarrollador Web</title> <!-- Título que aparece en la pestaña del navegador -->
+    
+    <!-- Framework CSS Tailwind desde CDN para estilos utilitarios -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+
+    
+    <!-- 
+    ========================================
+    ESTILOS PERSONALIZADOS CSS
+    ========================================
+    Esta sección contiene todos los estilos personalizados que complementan Tailwind CSS
+    -->
+    <style>
+        /* Importación de la fuente Inter desde Google Fonts con múltiples pesos */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        /* Aplicación global de la fuente Inter a todos los elementos */
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* 
+        ========================================
+        GRADIENTES Y FONDOS DECORATIVOS
+        ========================================
+        */
+        
+        /* Gradiente principal con colores cibernéticos (cian, magenta, amarillo) */
+        .gradient-bg {
+            background: linear-gradient(135deg, #00f5ff 0%, #ff00ff 50%, #ffff00 100%);
+        }
+        
+        /* Gradiente alternativo con tonos más suaves */
+        .gradient-bg-alt {
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 50%, #45b7d1 100%);
+        }
+        
+        /* Patrón de puntos tecnológicos para fondos decorativos */
+        .tech-pattern {
+            background-image: 
+                radial-gradient(circle at 25px 25px, rgba(0,245,255,0.1) 2px, transparent 0),
+                radial-gradient(circle at 75px 75px, rgba(255,0,255,0.1) 2px, transparent 0);
+            background-size: 100px 100px;
+        }
+        
+        /* 
+        ========================================
+        ANIMACIONES Y TRANSICIONES BÁSICAS
+        ========================================
+        */
+        
+        /* Efecto hover para tarjetas - se elevan suavemente al pasar el mouse */
+        .card-hover {
+            transition: all 0.3s ease; /* Transición suave de 0.3 segundos */
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px); /* Eleva la tarjeta 5px hacia arriba */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* Añade sombra para efecto de profundidad */
+        }
+        
+        /* Animación de las barras de habilidades - se llenan progresivamente */
+        .skill-bar {
+            transition: width 2s ease-in-out; /* Transición suave del ancho en 2 segundos */
+        }
+        
+        /* Efecto fade-in para elementos que aparecen al hacer scroll */
+        .fade-in {
+            opacity: 0; /* Inicialmente invisible */
+            transform: translateY(30px); /* Desplazado 30px hacia abajo */
+            transition: all 0.6s ease; /* Transición suave de 0.6 segundos */
+        }
+        
+        /* Estado visible del fade-in */
+        .fade-in.visible {
+            opacity: 1; /* Completamente visible */
+            transform: translateY(0); /* En su posición original */
+        }
+        
+
+        
+        /* Estilo base para enlaces de navegación */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease; /* Transición suave del color */
+        }
+        
+        /* Efecto de texto con gradiente para iconos tecnológicos */
+        .tech-icon {
+            background: linear-gradient(135deg, #00f5ff, #ff00ff); /* Gradiente cian a magenta */
+            -webkit-background-clip: text; /* Recorta el fondo al texto (WebKit) */
+            -webkit-text-fill-color: transparent; /* Hace el texto transparente para mostrar el gradiente */
+            background-clip: text; /* Versión estándar del recorte */
+        }
+        
+        /* Efecto hover para enlaces del menú móvil */
+        .neon-glow-hover:hover {
+            text-shadow: 
+                0 0 5px rgba(0, 255, 127, 0.8),
+                0 0 10px rgba(0, 255, 127, 0.6),
+                0 0 15px rgba(0, 255, 127, 0.4),
+                0 0 20px rgba(0, 255, 127, 0.2);
+            transform: scale(1.05);
+        }
+        
+        /* 
+        ========================================
+        EFECTOS CIBERPUNK Y NEÓN
+        ========================================
+        Estilos que crean la estética futurista y tecnológica del sitio
+        */
+        
+        /* Efecto de resplandor neón verde para texto */
+        .neon-glow {
+            text-shadow: 
+                0 0 5px rgba(0, 255, 127, 0.5),   /* Resplandor interno intenso */
+                0 0 10px rgba(0, 255, 127, 0.3),  /* Resplandor medio */
+                0 0 15px rgba(0, 255, 127, 0.2),  /* Resplandor externo suave */
+                0 0 20px rgba(0, 255, 127, 0.1);  /* Resplandor muy externo difuso */
+        }
+        
+        /* Borde con efecto neón para contenedores */
+        .neon-border {
+            border: 1px solid rgba(0, 255, 127, 0.3); /* Borde verde semitransparente */
+            box-shadow: 
+                0 0 10px rgba(0, 255, 127, 0.2),      /* Sombra externa con resplandor */
+                inset 0 0 10px rgba(0, 255, 127, 0.1); /* Sombra interna para efecto de profundidad */
+        }
+        
+        /* 
+        ========================================
+        LÍNEAS CIBERNÉTICAS ANIMADAS
+        ========================================
+        Líneas horizontales que se expanden y contraen para crear efecto de escaneo
+        */
+        
+        /* Estilo base para líneas cibernéticas */
+        .cyber-line {
+            position: absolute;
+            height: 1px; /* Línea muy delgada */
+            background: linear-gradient(90deg, transparent, #00ff7f, transparent); /* Gradiente que se desvanece en los extremos */
+            animation: cyber-scan 3s ease-in-out infinite; /* Animación de escaneo continua */
+        }
+        
+        /* Posicionamiento de la primera línea de escaneo */
+        .line-1 {
+            top: 20%;
+            left: 0;
+            width: 100%;
+            animation-delay: 0s; /* Sin retraso */
+        }
+        
+        /* Posicionamiento de la segunda línea de escaneo */
+        .line-2 {
+            top: 60%;
+            left: 0;
+            width: 100%;
+            animation-delay: 1s; /* Retraso de 1 segundo */
+        }
+        
+        /* Posicionamiento de la tercera línea de escaneo */
+        .line-3 {
+            top: 80%;
+            left: 0;
+            width: 100%;
+            animation-delay: 2s; /* Retraso de 2 segundos */
+        }
+        
+        /* Animación de escaneo cibernético - las líneas aparecen y desaparecen */
+        @keyframes cyber-scan {
+            0%, 100% { opacity: 0; transform: scaleX(0); } /* Invisible y contraída */
+            50% { opacity: 1; transform: scaleX(1); }       /* Visible y expandida */
+        }
+        
+        /* 
+        ========================================
+        CÓDIGO FLOTANTE ANIMADO
+        ========================================
+        Fragmentos de código que flotan por la pantalla para crear ambiente tecnológico
+        */
+        
+        /* Estilo base para fragmentos de código flotante */
+        .floating-code {
+            position: absolute;
+            font-family: 'Courier New', monospace; /* Fuente monoespaciada típica de código */
+            font-size: 12px;
+            color: rgba(0, 255, 127, 0.3); /* Verde neón semitransparente */
+            animation: code-float 8s linear infinite; /* Animación de flotación de 8 segundos */
+            pointer-events: none; /* No interfiere con la interacción del usuario */
+        }
+        
+        /* Posicionamiento del primer fragmento de código */
+        .code-1 {
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s; /* Sin retraso */
+        }
+        
+        /* Posicionamiento del segundo fragmento de código */
+        .code-2 {
+            top: 25%;
+            right: 15%;
+            animation-delay: 2s; /* Retraso de 2 segundos */
+        }
+        
+        /* Posicionamiento del tercer fragmento de código */
+        .code-3 {
+            bottom: 30%;
+            left: 20%;
+            animation-delay: 4s; /* Retraso de 4 segundos */
+        }
+        
+        /* Posicionamiento del cuarto fragmento de código */
+        .code-4 {
+            top: 70%;
+            right: 25%;
+            animation-delay: 6s; /* Retraso de 6 segundos */
+        }
+        
+        /* Animación de flotación del código - sube lentamente mientras aparece y desaparece */
+        @keyframes code-float {
+            0% { opacity: 0; transform: translateY(20px); }   /* Invisible, abajo */
+            10%, 90% { opacity: 1; }                          /* Visible durante la mayor parte del tiempo */
+            100% { opacity: 0; transform: translateY(-20px); } /* Invisible, arriba */
+        }
+        
+        /* 
+        ========================================
+        CURSOR DE TERMINAL Y EFECTOS GLITCH
+        ========================================
+        */
+        
+        /* Cursor parpadeante estilo terminal */
+        .terminal-cursor {
+            display: inline-block;
+            width: 2px; /* Ancho del cursor */
+            height: 1.2em; /* Altura relativa al texto */
+            background: #00ff7f; /* Color verde neón */
+            animation: cursor-blink 1s infinite; /* Parpadeo cada segundo */
+        }
+        
+        /* Animación de parpadeo del cursor */
+        @keyframes cursor-blink {
+            0%, 50% { opacity: 1; } /* Visible la primera mitad */
+            51%, 100% { opacity: 0; } /* Invisible la segunda mitad */
+        }
+        
+        /* 
+        ========================================
+        EFECTO GLITCH PARA TEXTO
+        ========================================
+        Crea un efecto de interferencia digital con múltiples capas de texto
+        */
+        
+        /* Contenedor principal del texto con glitch */
+        .glitch-text {
+            position: relative;
+            color: #fff; /* Color base blanco */
+            animation: glitch 2s infinite; /* Animación principal de glitch */
+        }
+        
+        /* Pseudo-elementos que crean las capas adicionales del efecto glitch */
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text); /* Copia el texto del atributo data-text */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Primera capa del glitch - color verde */
+        .glitch-text::before {
+            animation: glitch-1 0.5s infinite; /* Animación rápida */
+            color: #00ff7f; /* Verde neón */
+            z-index: -1; /* Detrás del texto principal */
+        }
+        
+        /* Segunda capa del glitch - color magenta */
+        .glitch-text::after {
+            animation: glitch-2 0.5s infinite; /* Animación rápida */
+            color: #ff0080; /* Magenta */
+            z-index: -2; /* Más atrás que la primera capa */
+        }
+        
+        /* Animación principal del glitch - movimiento errático */
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+        
+        /* Animación de la primera capa - movimiento opuesto */
+        @keyframes glitch-1 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(2px, -2px); }
+            40% { transform: translate(-2px, 2px); }
+            60% { transform: translate(-2px, -2px); }
+            80% { transform: translate(2px, 2px); }
+        }
+        
+        /* Animación de la segunda capa - movimiento diferente */
+        @keyframes glitch-2 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(-2px, -2px); }
+        }
+        
+        /* 
+        ========================================
+        BOTÓN CIBERNÉTICO INTERACTIVO
+        ========================================
+        Botón con efecto de barrido luminoso y transformación al hacer hover
+        */
+        
+        /* Estilo base del botón cibernético */
+        .cyber-button {
+            position: relative;
+            background: transparent; /* Fondo transparente inicialmente */
+            border: 2px solid #00ff7f; /* Borde verde neón */
+            color: #00ff7f; /* Texto verde neón */
+            padding: 12px 24px;
+            font-weight: bold;
+            text-transform: uppercase; /* Texto en mayúsculas */
+            letter-spacing: 1px; /* Espaciado entre letras */
+            transition: all 0.3s ease; /* Transición suave */
+            overflow: hidden; /* Oculta el efecto de barrido fuera del botón */
+        }
+        
+        /* Pseudo-elemento para el efecto de barrido luminoso */
+        .cyber-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%; /* Inicialmente fuera del botón (izquierda) */
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 127, 0.2), transparent); /* Gradiente luminoso */
+            transition: left 0.5s; /* Transición del movimiento */
+        }
+        
+        /* Movimiento del barrido al hacer hover */
+        .cyber-button:hover::before {
+            left: 100%; /* Se mueve completamente hacia la derecha */
+        }
+        
+        /* Transformación del botón al hacer hover */
+        .cyber-button:hover {
+            color: #000; /* Texto negro */
+            background: #00ff7f; /* Fondo verde neón */
+            box-shadow: 0 0 20px rgba(0, 255, 127, 0.5); /* Resplandor intenso */
+        }
+        
+        /* 
+        ========================================
+        ORBES TECNOLÓGICOS FLOTANTES
+        ========================================
+        Elementos decorativos circulares que flotan en el fondo
+        */
+        
+        /* Estilo base para orbes tecnológicos */
+        .tech-orb {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%; /* Forma circular */
+            background: radial-gradient(circle at 30% 30%, rgba(0, 255, 127, 0.3), rgba(0, 255, 127, 0.1), transparent); /* Gradiente radial con efecto de luz */
+            animation: orb-float 6s ease-in-out infinite; /* Animación de flotación */
+        }
+        
+        /* Posicionamiento del primer orbe */
+        .orb-1 {
+            top: 10%;
+            left: 15%;
+            animation-delay: 0s; /* Sin retraso */
+        }
+        
+        /* Posicionamiento del segundo orbe */
+        .orb-2 {
+            top: 30%;
+            right: 20%;
+            animation-delay: 2s; /* Retraso de 2 segundos */
+        }
+        
+        /* Posicionamiento del tercer orbe */
+        .orb-3 {
+            bottom: 20%;
+            left: 25%;
+            animation-delay: 4s; /* Retraso de 4 segundos */
+        }
+        
+        /* Animación de flotación de los orbes - suben y bajan suavemente */
+        @keyframes orb-float {
+            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.3; } /* Posición inicial, tamaño normal, semi-transparente */
+            50% { transform: translateY(-20px) scale(1.1); opacity: 0.6; }   /* Sube 20px, se agranda 10%, más opaco */
+        }
+        
+        /* 
+        ========================================
+        FLUJOS DE DATOS ANIMADOS
+        ========================================
+        Líneas verticales que caen como lluvia de código Matrix
+        */
+        
+        /* Estilo base para flujos de datos */
+        .data-stream {
+            position: absolute;
+            width: 2px; /* Línea muy delgada */
+            height: 60px; /* Altura del flujo */
+            background: linear-gradient(to bottom, transparent, #00ff7f, transparent); /* Gradiente vertical que se desvanece */
+            animation: stream-flow 4s linear infinite; /* Animación de caída continua */
+        }
+        
+        /* Posicionamiento del primer flujo de datos */
+        .stream-1 {
+            top: 0;
+            left: 20%;
+            animation-delay: 0s; /* Sin retraso */
+        }
+        
+        /* Posicionamiento del segundo flujo de datos */
+        .stream-2 {
+            top: 0;
+            left: 40%;
+            animation-delay: 1s; /* Retraso de 1 segundo */
+        }
+        
+        /* Posicionamiento del tercer flujo de datos */
+        .stream-3 {
+            top: 0;
+            left: 60%;
+            animation-delay: 2s; /* Retraso de 2 segundos */
+        }
+        
+        /* Posicionamiento del cuarto flujo de datos */
+        .stream-4 {
+            top: 0;
+            left: 80%;
+            animation-delay: 3s; /* Retraso de 3 segundos */
+        }
+        
+        /* Animación de caída de los flujos de datos */
+        @keyframes stream-flow {
+            0% { transform: translateY(-60px); opacity: 0; }    /* Invisible, arriba de la pantalla */
+            10%, 90% { opacity: 1; }                           /* Visible durante la caída */
+            100% { transform: translateY(100vh); opacity: 0; } /* Invisible, abajo de la pantalla */
+        }
+        
+        /* 
+        ========================================
+        EFECTO HOLOGRAMA
+        ========================================
+        Patrón diagonal animado que simula interferencia holográfica
+        */
+        
+        /* Contenedor con efecto holograma */
+        .hologram-effect {
+            position: relative;
+            background: linear-gradient(45deg, transparent 30%, rgba(0, 255, 127, 0.1) 50%, transparent 70%); /* Líneas diagonales semitransparentes */
+            background-size: 20px 20px; /* Tamaño del patrón */
+            animation: hologram-scan 3s linear infinite; /* Animación de escaneo continuo */
+        }
+        
+        /* Animación del efecto holograma - mueve el patrón diagonalmente */
+        @keyframes hologram-scan {
+            0% { background-position: 0 0; }       /* Posición inicial */
+            100% { background-position: 20px 20px; } /* Posición final (un ciclo completo del patrón) */
+        }
+        
+        /* 
+        ========================================
+        EFECTO DE ESCRITURA AUTOMÁTICA
+        ========================================
+        Simula texto siendo escrito en tiempo real con cursor parpadeante
+        */
+        
+        /* Contenedor del efecto de escritura */
+        .typing-effect {
+            overflow: hidden; /* Oculta el texto que aún no se ha "escrito" */
+            border-right: 2px solid #00ff7f; /* Cursor verde neón */
+            white-space: nowrap; /* Evita que el texto se divida en líneas */
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite; /* Animación de escritura y parpadeo del cursor */
+        }
+        
+        /* Animación de escritura - revela el texto gradualmente */
+        @keyframes typing {
+            from { width: 0; }    /* Comienza sin mostrar texto */
+            to { width: 100%; }   /* Termina mostrando todo el texto */
+        }
+        
+        /* Animación del cursor parpadeante */
+        @keyframes blink-caret {
+            from, to { border-color: transparent; } /* Cursor invisible */
+            50% { border-color: #00ff7f; }          /* Cursor visible */
+        }
+        
+        /* 
+        ========================================
+        TÍTULOS CIBERNÉTICOS
+        ========================================
+        Estilos para títulos de sección con efectos futuristas
+        */
+        
+        /* Título con resplandor neón intenso */
+        .cyber-title {
+            position: relative;
+            display: inline-block;
+            color: #00ffff; /* Cian brillante */
+            font-weight: 700;
+            letter-spacing: 2px; /* Espaciado amplio entre letras */
+            text-transform: uppercase; /* Texto en mayúsculas */
+            text-shadow: 
+                0 0 5px #00ffff,   /* Resplandor interno */
+                0 0 10px #00ffff,  /* Resplandor medio */
+                0 0 15px #00ffff,  /* Resplandor externo */
+                0 0 20px #00ffff;  /* Resplandor muy externo */
+        }
+        
+        /* Título limpio con línea inferior luminosa */
+        .cyber-title-clean {
+            position: relative;
+            display: inline-block;
+            color: #ffffff; /* Blanco puro */
+            font-weight: 700;
+            letter-spacing: 2px; /* Espaciado amplio entre letras */
+            text-transform: uppercase; /* Texto en mayúsculas */
+        }
+        
+        /* Línea inferior luminosa para el título limpio */
+        .cyber-title-clean::after {
+            content: '';
+            position: absolute;
+            bottom: -8px; /* 8px debajo del texto */
+            left: 0;
+            width: 100%; /* Ancho completo del título */
+            height: 2px; /* Línea delgada */
+            background: #00ff7f; /* Verde neón */
+            box-shadow: 0 0 10px #00ff7f, 0 0 20px #00ff7f; /* Resplandor de la línea */
+        }
+    </style>
+</head>
+
+<!-- 
+========================================
+CUERPO DEL DOCUMENTO
+========================================
+Fondo negro para crear la estética ciberpunk
+-->
+<body class="bg-black">
+    
+    <!-- 
+    ========================================
+    BARRA DE NAVEGACIÓN FIJA
+    ========================================
+    Navegación que permanece en la parte superior con efecto glass al hacer scroll
+    - Posición fija para que siempre sea visible
+    - Efecto backdrop-blur para el glass morphism
+    - z-index alto para estar sobre otros elementos
+    - Transición suave para cambios de estilo al hacer scroll
+    -->
+    <nav id="navbar" class="fixed top-0 w-full bg-black/95 backdrop-blur-md z-50 shadow-lg border-b border-gray-800 transition-all duration-300">
+        <!-- Contenedor principal de la navegación con ancho máximo y centrado -->
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <!-- Flexbox para distribuir elementos horizontalmente -->
+            <div class="flex justify-between items-center">
+                
+                <!-- Logo/Marca con efecto neón y nombre del desarrollador -->
+                <div class="flex items-center space-x-4">
+                    <div class="text-2xl font-bold text-white neon-glow">
+                        &lt;MI PORTAFOLIO/&gt; <!-- Estilo de etiqueta HTML para representar código -->
+                    </div>
+                    
+                    <!-- Nombre del desarrollador -->
+                    <div class="hidden md:flex flex-col">
+                        <div class="text-lg font-semibold text-white leading-tight">Eduardo</div>
+                        <div class="text-lg font-semibold text-green-400 leading-tight">Martinez</div>
+                    </div>
+                </div>
+                
+                <!-- Menú de navegación para escritorio (oculto en móvil) -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="nav-link text-gray-300 hover:text-green-400">Inicio</a>
+                    <a href="#sobre-mi" class="nav-link text-gray-300 hover:text-green-400">Sobre Mí</a>
+                    <a href="#habilidades" class="nav-link text-gray-300 hover:text-green-400">Habilidades</a>
+                    <a href="#servicios" class="nav-link text-gray-300 hover:text-green-400">Servicios</a>
+                    <a href="#contacto" class="nav-link text-gray-300 hover:text-green-400">Contacto</a>
+                </div>
+                
+                <!-- Botón hamburguesa para menú móvil (oculto en escritorio) -->
+                <button id="menu-toggle" class="md:hidden text-gray-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Menú móvil desplegable fullscreen (inicialmente oculto) -->
+            <div id="mobile-menu" class="hidden">
+                <div class="fixed inset-0 bg-black/95 backdrop-blur-md z-50 flex flex-col items-center justify-center min-h-screen w-full">
+                    <!-- Botón de cerrar con cruz cyber neón -->
+                    <button id="menu-close" class="absolute top-6 left-6 w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg flex items-center justify-center text-white shadow-lg transition-all duration-300 neon-border hover:scale-110 active:scale-95" style="box-shadow: 0 0 20px rgba(34, 197, 94, 0.6), 0 0 40px rgba(34, 197, 94, 0.3);">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                    
+                    <!-- Enlaces del menú centrados -->
+                    <div class="flex flex-col items-center justify-center space-y-8 text-center">
+                        <a href="#inicio" class="block text-3xl font-bold text-gray-300 hover:text-green-400 transition-all duration-300 neon-glow-hover">Inicio</a>
+                        <a href="#sobre-mi" class="block text-3xl font-bold text-gray-300 hover:text-green-400 transition-all duration-300 neon-glow-hover">Sobre Mí</a>
+                        <a href="#habilidades" class="block text-3xl font-bold text-gray-300 hover:text-green-400 transition-all duration-300 neon-glow-hover">Habilidades</a>
+                        <a href="#servicios" class="block text-3xl font-bold text-gray-300 hover:text-green-400 transition-all duration-300 neon-glow-hover">Servicios</a>
+                        <a href="#contacto" class="block text-3xl font-bold text-gray-300 hover:text-green-400 transition-all duration-300 neon-glow-hover">Contacto</a>
+                    </div>
+                    
+                    <!-- Decoración cyber en el fondo -->
+                    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                        <div class="cyber-line line-1"></div>
+                        <div class="cyber-line line-2"></div>
+                        <div class="cyber-line line-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 
+    ========================================
+    SECCIÓN HERO (PRINCIPAL)
+    ========================================
+    Primera sección que ve el usuario con efectos visuales impactantes
+    - Altura adaptativa: 100vh en móvil, 80vh en desktop
+    - Posición relativa para contener elementos absolutos
+    - Overflow hidden para mantener efectos dentro de los límites
+    -->
+    <section id="inicio" class="relative overflow-hidden min-h-screen lg:h-[80vh] flex items-center bg-black text-white pt-20 sm:pt-24 lg:pt-0">
+        
+        <!-- 
+        FLUJOS DE DATOS ANIMADOS
+        Líneas verticales que caen como lluvia de código Matrix
+        -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="data-stream stream-1"></div> <!-- Primer flujo -->
+            <div class="data-stream stream-2"></div> <!-- Segundo flujo -->
+            <div class="data-stream stream-3"></div> <!-- Tercer flujo -->
+            <div class="data-stream stream-4"></div> <!-- Cuarto flujo -->
+        </div>
+        
+        <!-- 
+        ORBES TECNOLÓGICOS FLOTANTES
+        Elementos decorativos circulares que flotan en el fondo
+        -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="tech-orb orb-1"></div> <!-- Primer orbe -->
+            <div class="tech-orb orb-2"></div> <!-- Segundo orbe -->
+            <div class="tech-orb orb-3"></div> <!-- Tercer orbe -->
+        </div>
+        
+        <!-- 
+        CÓDIGO FLOTANTE
+        Fragmentos de código JavaScript que flotan por la pantalla
+        -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="floating-code code-1">const developer = { skills: ['React', 'Node.js'] };</div>
+            <div class="floating-code code-2">function createAwesome() { return innovation; }</div>
+            <div class="floating-code code-3">while(coding) { dreams.push(reality); }</div>
+            <div class="floating-code code-4">export default Excellence;</div>
+        </div>
+        
+        <!-- 
+        CONTENIDO PRINCIPAL DEL HERO
+        Grid de dos columnas en pantallas grandes, una columna en móviles
+        z-index alto para estar sobre los efectos de fondo
+        -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+                
+                <!-- 
+                COLUMNA IZQUIERDA - CONTENIDO TEXTUAL
+                Información principal, terminal simulada, títulos y botones
+                -->
+                <div class="fade-in">
+                    <!-- 
+                    VENTANA DE TERMINAL SIMULADA
+                    Imita la apariencia de una terminal de comandos real
+                    -->
+                    <div class="neon-border rounded-lg bg-black/50 backdrop-blur-sm p-2 sm:p-3 mb-3 sm:mb-4">
+                        <!-- Barra superior de la terminal con botones de control -->
+                        <div class="flex items-center mb-2">
+                            <!-- Botones de control estilo macOS (cerrar, minimizar, maximizar) -->
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-red-500 rounded-full"></div>    <!-- Botón cerrar -->
+                                <div class="w-2 h-2 bg-yellow-500 rounded-full"></div> <!-- Botón minimizar -->
+                                <div class="w-2 h-2 bg-green-500 rounded-full"></div>  <!-- Botón maximizar -->
+                            </div>
+                            <!-- Título de la terminal -->
+                            <div class="ml-2 sm:ml-3 text-gray-400 text-xs sm:text-sm font-mono">terminal@developer:~$</div>
+                        </div>
+                        
+                        <!-- Contenido de la terminal con comandos simulados -->
+                        <div class="font-mono text-xs sm:text-sm">
+                            <!-- Comando whoami -->
+                            <div class="text-green-400 mb-1">
+                                <span class="text-gray-400">$</span> whoami
+                            </div>
+                            <div class="text-white mb-1">Desarrollador Full Stack</div>
+                            
+                            <!-- Comando status -->
+                            <div class="text-green-400 mb-1">
+                                <span class="text-gray-400">$</span> status
+                            </div>
+                            <div class="text-white">
+                                <span class="text-green-400">●</span> Disponible para proyectos
+                                <span class="terminal-cursor"></span> <!-- Cursor parpadeante -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 
+                    TÍTULO PRINCIPAL
+                    Título impactante con efecto glitch en la segunda línea
+                    -->
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 sm:mb-4 leading-tight">
+                        <span class="block text-white">CÓDIGO</span> <!-- Primera línea en blanco -->
+                        <span class="block glitch-text neon-glow" data-text="INNOVACIÓN">INNOVACIÓN</span> <!-- Segunda línea con efecto glitch -->
+                    </h1>
+                    
+                    <!-- Descripción principal -->
+                    <p class="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed">
+                        Transformo líneas de código en experiencias digitales extraordinarias. 
+                        Especializado en crear soluciones web innovadoras.
+                    </p>
+                    
+                    <!-- 
+                    BOTONES DE LLAMADA A LA ACCIÓN (CTA)
+                    Botón principal cibernético y botón secundario
+                    -->
+                    <div class="flex flex-col sm:flex-row gap-3 mb-4 sm:mb-6">
+                        <!-- Botón principal con efecto cibernético -->
+                        <button id="iniciar-proyecto-btn" class="cyber-button text-xs sm:text-sm px-4 sm:px-6 py-2 sm:py-3">
+                            Iniciar Proyecto
+                        </button>
+                        <!-- Botón secundario con borde -->
+                        <a href="#sobre-mi" class="px-4 sm:px-6 py-2 sm:py-3 border border-gray-600 text-gray-300 hover:border-green-400 hover:text-green-400 transition-all duration-300 font-semibold text-xs sm:text-sm text-center">
+                            Ver Portfolio
+                        </a>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-2 sm:gap-3">
+                        <div class="text-center">
+                            <div class="text-lg sm:text-xl font-bold text-green-400 neon-glow">20+</div>
+                            <div class="text-gray-400 text-xs sm:text-sm">Proyectos</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-lg sm:text-xl font-bold text-green-400 neon-glow">5+</div>
+                            <div class="text-gray-400 text-xs sm:text-sm">Años</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-lg sm:text-xl font-bold text-green-400 neon-glow">100%</div>
+                            <div class="text-gray-400 text-xs sm:text-sm">Satisfacción</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Content - 3D Code Visualization -->
+                <div class="fade-in relative mt-6 lg:mt-0">
+                    <div class="hologram-effect neon-border rounded-xl p-3 sm:p-4 bg-black/30 backdrop-blur-sm">
+                        <!-- Code Editor Mockup -->
+                        <div class="bg-gray-900 rounded-lg overflow-hidden">
+                            <!-- Editor Header -->
+                            <div class="bg-gray-800 px-2 sm:px-3 py-2 flex items-center justify-between">
+                                <div class="flex space-x-1">
+                                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                                    <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                </div>
+                                <div class="text-gray-400 text-xs sm:text-sm">app.js</div>
+                                <div class="text-gray-400 text-xs sm:text-sm">●</div>
+                            </div>
+                            
+                            <!-- Code Content -->
+                            <div class="p-2 sm:p-3 font-mono text-xs sm:text-sm relative h-40 sm:h-48">
+                                <div class="absolute left-2 top-3 text-gray-500 leading-4">
+                                    <div>1</div>
+                                    <div>2</div>
+                                    <div>3</div>
+                                    <div>4</div>
+                                    <div>5</div>
+                                    <div>6</div>
+                                    <div>7</div>
+                                    <div>8</div>
+                                </div>
+                                
+                                <div class="ml-6 leading-4">
+                                    <div><span class="text-purple-400">import</span> <span class="text-blue-400">React</span> <span class="text-white">from</span> <span class="text-green-400">'react';</span></div>
+                                    <div><span class="text-purple-400">const</span> <span class="text-blue-400">Developer</span> <span class="text-white">=</span> <span class="text-yellow-400">()</span> <span class="text-white">=></span> <span class="text-yellow-400">{</span></div>
+                                    <div class="ml-2"><span class="text-purple-400">return</span> <span class="text-yellow-400">(</span></div>
+                                    <div class="ml-4"><span class="text-red-400">&lt;div</span> <span class="text-green-400">className</span><span class="text-white">=</span><span class="text-green-400">"innovation"</span><span class="text-red-400">&gt;</span></div>
+                                    <div class="ml-6 text-white">Creando el futuro</div>
+                                    <div class="ml-4"><span class="text-red-400">&lt;/div&gt;</span></div>
+                                    <div class="ml-2"><span class="text-yellow-400">);</span></div>
+                                    <div><span class="text-yellow-400">};</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Tech Icons -->
+                        <div class="absolute -top-1 sm:-top-2 -right-1 sm:-right-2 w-8 sm:w-10 h-8 sm:h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-xs sm:text-sm animate-bounce">
+                            ⚛️
+                        </div>
+                        <div class="absolute -bottom-1 sm:-bottom-2 -left-1 sm:-left-2 w-6 sm:w-8 h-6 sm:h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center text-white font-bold text-xs animate-pulse">
+                            🟢
+                        </div>
+                        <div class="absolute top-1/2 -right-2 sm:-right-3 w-6 sm:w-7 h-6 sm:h-7 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center text-white font-bold text-xs animate-spin">
+                            JS
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="absolute -bottom-4 sm:-bottom-8 left-1/2 transform -translate-x-1/2 fade-in hidden sm:block">
+                <div class="flex flex-col items-center text-green-400">
+                    <span class="text-xs mb-1 font-mono">&gt; scroll_down</span>
+                    <div class="w-5 h-8 border-2 border-green-400 rounded-full flex justify-center">
+                        <div class="w-1 h-2 bg-green-400 rounded-full mt-1 animate-bounce"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Mí -->
+    <section id="sobre-mi" class="py-12 sm:py-16 lg:py-20" style="background-color: #080808;">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-8 sm:mb-12 lg:mb-16 fade-in">
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-6 relative">
+                    <span class="cyber-title-clean">SOBRE MÍ</span>
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
+                <div class="fade-in order-2 md:order-1">
+                    <div class="neon-border rounded-2xl p-4 sm:p-6 lg:p-8 bg-black/50 backdrop-blur-sm">
+                        <div class="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 mx-auto rounded-full overflow-hidden border-4 border-green-400 shadow-lg">
+                            <img src="https://i.postimg.cc/Hkbrh5FS/zetaportafolio.png" alt="Eduardo Martinez - Desarrollador Full Stack" class="w-full h-full object-cover object-center">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in order-1 md:order-2">
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Desarrollador Apasionado por la Innovación</h3>
+                    <p class="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed">
+                        Hola a todos mi nombre es Eduardo Martinez, soy un desarrollador full stack con más de 5 años de experiencia creando soluciones web innovadoras. 
+                        Mi pasión por la tecnología me impulsa a estar siempre actualizado con las últimas tendencias y 
+                        mejores prácticas del desarrollo web.
+                    </p>
+                    <p class="text-sm sm:text-base text-gray-300 mb-6 sm:mb-8 leading-relaxed">
+                        Especializado en crear experiencias de usuario excepcionales, combino diseño elegante con 
+                        funcionalidad robusta para entregar productos que no solo se ven bien, sino que también 
+                        funcionan perfectamente.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 sm:gap-6">
+                        <div class="text-center p-3 sm:p-4 neon-border rounded-lg bg-black/30">
+                            <div class="text-2xl sm:text-3xl font-bold text-green-400 mb-1 sm:mb-2 neon-glow">20+</div>
+                            <div class="text-gray-300 text-xs sm:text-sm">Proyectos Completados</div>
+                        </div>
+                        <div class="text-center p-3 sm:p-4 neon-border rounded-lg bg-black/30">
+                            <div class="text-2xl sm:text-3xl font-bold text-green-400 mb-1 sm:mb-2 neon-glow">5+</div>
+                            <div class="text-gray-300 text-xs sm:text-sm">Años de Experiencia</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Habilidades -->
+    <section id="habilidades" class="py-12 sm:py-16 lg:py-20 bg-black">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-8 sm:mb-12 lg:mb-16 fade-in">
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-6 relative">
+                    <span class="cyber-title-clean">HABILIDADES</span>
+                </h2>
+                <p class="text-sm sm:text-base text-gray-300 mt-4 sm:mt-6 max-w-2xl mx-auto">
+                    Dominio de tecnologías modernas para crear soluciones web completas y escalables
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
+                <!-- Frontend -->
+                <div class="fade-in">
+                    <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-6 sm:mb-8 flex items-center">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-400 to-cyan-400 rounded-lg flex items-center justify-center mr-3 sm:mr-4 neon-border" style="box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                        </div>
+                        Frontend
+                    </h3>
+                    <div class="space-y-4 sm:space-y-6">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold text-gray-300 text-sm sm:text-base">React / Next.js</span>
+                                <span class="text-green-400 font-semibold text-sm sm:text-base">95%</span>
+                            </div>
+                            <div class="bg-gray-900 rounded-full h-2 sm:h-3 border border-gray-700">
+                                <div class="skill-bar bg-gradient-to-r from-green-400 to-blue-500 h-2 sm:h-3 rounded-full shadow-lg" style="width: 0%; box-shadow: 0 0 10px rgba(34, 197, 94, 0.5), 0 0 20px rgba(34, 197, 94, 0.3), 0 0 30px rgba(34, 197, 94, 0.1);" data-width="95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold text-gray-300">JavaScript / TypeScript</span>
+                                <span class="text-green-400 font-semibold">90%</span>
+                            </div>
+                            <div class="bg-gray-900 rounded-full h-3 border border-gray-700">
+                                <div class="skill-bar bg-gradient-to-r from-green-400 to-blue-500 h-3 rounded-full shadow-lg" style="width: 0%; box-shadow: 0 0 10px rgba(34, 197, 94, 0.5), 0 0 20px rgba(34, 197, 94, 0.3), 0 0 30px rgba(34, 197, 94, 0.1);" data-width="90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold text-gray-300">CSS / Tailwind</span>
+                                <span class="text-green-400 font-semibold">88%</span>
+                            </div>
+                            <div class="bg-gray-900 rounded-full h-3 border border-gray-700">
+                                <div class="skill-bar bg-gradient-to-r from-green-400 to-blue-500 h-3 rounded-full shadow-lg" style="width: 0%; box-shadow: 0 0 10px rgba(34, 197, 94, 0.5), 0 0 20px rgba(34, 197, 94, 0.3), 0 0 30px rgba(34, 197, 94, 0.1);" data-width="88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold text-white mb-8 flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-400 rounded-lg flex items-center justify-center mr-4 neon-border" style="box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);">
+                            <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8z"></path>
+                            </svg>
+                        </div>
+                        Backend
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold text-gray-300">Node.js / Express</span>
+                                <span class="text-green-400 font-semibold">85%</span>
+                            </div>
+                            <div class="bg-gray-900 rounded-full h-3 border border-gray-700">
+                                <div class="skill-bar bg-gradient-to-r from-green-400 to-blue-500 h-3 rounded-full shadow-lg" style="width: 0%; box-shadow: 0 0 10px rgba(34, 197, 94, 0.5), 0 0 20px rgba(34, 197, 94, 0.3), 0 0 30px rgba(34, 197, 94, 0.1);" data-width="85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold text-gray-300">Python / Django</span>
+                                <span class="text-green-400 font-semibold">80%</span>
+                            </div>
+                            <div class="bg-gray-900 rounded-full h-3 border border-gray-700">
+                                <div class="skill-bar bg-gradient-to-r from-green-400 to-blue-500 h-3 rounded-full shadow-lg" style="width: 0%; box-shadow: 0 0 10px rgba(34, 197, 94, 0.5), 0 0 20px rgba(34, 197, 94, 0.3), 0 0 30px rgba(34, 197, 94, 0.1);" data-width="80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold text-gray-300">MongoDB / PostgreSQL</span>
+                                <span class="text-green-400 font-semibold">82%</span>
+                            </div>
+                            <div class="bg-gray-900 rounded-full h-3 border border-gray-700">
+                                <div class="skill-bar bg-gradient-to-r from-green-400 to-blue-500 h-3 rounded-full shadow-lg" style="width: 0%; box-shadow: 0 0 10px rgba(34, 197, 94, 0.5), 0 0 20px rgba(34, 197, 94, 0.3), 0 0 30px rgba(34, 197, 94, 0.1);" data-width="82%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tecnologías -->
+            <div class="mt-12 sm:mt-14 lg:mt-16 fade-in">
+                <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-6 sm:mb-8 text-center">Tecnologías y Herramientas</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-6">
+                    <div class="neon-border p-3 sm:p-4 lg:p-6 rounded-xl card-hover text-center bg-black/30">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center mx-auto mb-2 sm:mb-3 neon-border" style="box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);">
+                            <i class="fab fa-react w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-black"></i>
+                        </div>
+                        <div class="font-semibold text-gray-300 text-xs sm:text-sm">React</div>
+                    </div>
+                    <div class="neon-border p-3 sm:p-4 lg:p-6 rounded-xl card-hover text-center bg-black/30">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg flex items-center justify-center mx-auto mb-2 sm:mb-3 neon-border" style="box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);">
+                            <i class="fab fa-node-js w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-black"></i>
+                        </div>
+                        <div class="font-semibold text-gray-300 text-xs sm:text-sm">Node.js</div>
+                    </div>
+                    <div class="neon-border p-3 sm:p-4 lg:p-6 rounded-xl card-hover text-center bg-black/30">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center mx-auto mb-2 sm:mb-3 neon-border" style="box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);">
+                            <i class="fab fa-python w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-black"></i>
+                        </div>
+                        <div class="font-semibold text-gray-300 text-xs sm:text-sm">Python</div>
+                    </div>
+                    <div class="neon-border p-3 sm:p-4 lg:p-6 rounded-xl card-hover text-center bg-black/30">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-lg flex items-center justify-center mx-auto mb-2 sm:mb-3 neon-border" style="box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);">
+                            <i class="fas fa-database w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-black"></i>
+                        </div>
+                        <div class="font-semibold text-gray-300 text-xs sm:text-sm">MongoDB</div>
+                    </div>
+                    <div class="neon-border p-3 sm:p-4 lg:p-6 rounded-xl card-hover text-center bg-black/30">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-red-400 to-pink-500 rounded-lg flex items-center justify-center mx-auto mb-2 sm:mb-3 neon-border" style="box-shadow: 0 0 15px rgba(248, 113, 113, 0.4);">
+                            <i class="fab fa-git-alt w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-black"></i>
+                        </div>
+                        <div class="font-semibold text-gray-300 text-xs sm:text-sm">Git</div>
+                    </div>
+                    <div class="neon-border p-3 sm:p-4 lg:p-6 rounded-xl card-hover text-center bg-black/30">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-lg flex items-center justify-center mx-auto mb-2 sm:mb-3 neon-border" style="box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);">
+                            <i class="fab fa-aws w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-black"></i>
+                        </div>
+                        <div class="font-semibold text-gray-300 text-xs sm:text-sm">AWS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="py-12 sm:py-16 lg:py-20" style="background-color: #080808;">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-8 sm:mb-12 lg:mb-16 fade-in">
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-6 relative">
+                    <span class="cyber-title-clean">SERVICIOS</span>
+                </h2>
+                <p class="text-sm sm:text-base text-gray-300 mt-4 sm:mt-6 max-w-2xl mx-auto">
+                    Soluciones completas de desarrollo web adaptadas a tus necesidades específicas
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                <div class="neon-border rounded-xl p-4 sm:p-6 card-hover fade-in bg-black/30 backdrop-blur-sm min-h-[280px] sm:min-h-[320px] flex flex-col">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-lg flex items-center justify-center mb-3 sm:mb-4 neon-border" style="box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);">
+                        <i class="fas fa-laptop-code w-5 h-5 sm:w-6 sm:h-6 text-black"></i>
+                    </div>
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3">Desarrollo Frontend</h3>
+                    <p class="text-gray-300 mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed flex-grow">
+                        Interfaces modernas y responsivas con React, Next.js y las últimas tecnologías frontend.
+                    </p>
+                    <ul class="text-xs text-gray-300 space-y-1">
+                        <li class="flex items-center"><span class="text-green-400 mr-2 text-sm">✓</span> Diseño Responsivo</li>
+                        <li class="flex items-center"><span class="text-green-400 mr-2 text-sm">✓</span> Optimización SEO</li>
+                        <li class="flex items-center"><span class="text-green-400 mr-2 text-sm">✓</span> Performance Optimizada</li>
+                    </ul>
+                </div>
+
+                <div class="neon-border rounded-xl p-4 sm:p-6 card-hover fade-in bg-black/30 backdrop-blur-sm min-h-[280px] sm:min-h-[320px] flex flex-col">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mb-3 sm:mb-4 neon-border" style="box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);">
+                        <i class="fas fa-server w-5 h-5 sm:w-6 sm:h-6 text-black"></i>
+                    </div>
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3">Desarrollo Backend</h3>
+                    <p class="text-gray-300 mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed flex-grow">
+                        APIs robustas y escalables con Node.js, Python y bases de datos modernas.
+                    </p>
+                    <ul class="text-xs text-gray-300 space-y-1">
+                        <li class="flex items-center"><span class="text-green-400 mr-2 text-sm">✓</span> APIs RESTful</li>
+                        <li class="flex items-center"><span class="text-green-400 mr-2 text-sm">✓</span> Base de Datos</li>
+                        <li class="flex items-center"><span class="text-green-400 mr-2 text-sm">✓</span> Autenticación</li>
+                    </ul>
+                </div>
+
+                <div class="neon-border rounded-xl p-4 sm:p-6 card-hover fade-in bg-black/30 backdrop-blur-sm min-h-[280px] sm:min-h-[320px] flex flex-col">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center mb-3 sm:mb-4 neon-border" style="box-shadow: 0 0 15px rgba(249, 115, 22, 0.4);">
+                        <i class="fas fa-layer-group w-5 h-5 sm:w-6 sm:h-6 text-black"></i>
+                    </div>
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3">Desarrollo Full Stack</h3>
+                    <p class="text-gray-300 mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed flex-grow">
+                        Soluciones completas desde frontend hasta backend, incluyendo despliegue.
+                    </p>
+                    <ul class="text-xs text-gray-300 space-y-1">
+                        <li class="flex items-center"><span class="text-green-400 mr-2 text-sm">✓</span> Aplicación Completa</li>
+                        <li class="flex items-center"><span class="text-green-400 mr-2 text-sm">✓</span> Despliegue</li>
+                        <li class="flex items-center"><span class="text-green-400 mr-2 text-sm">✓</span> Mantenimiento</li>
+                    </ul>
+                </div>
+
+                <div class="neon-border rounded-xl p-4 sm:p-6 card-hover fade-in bg-black/30 backdrop-blur-sm min-h-[280px] sm:min-h-[320px] flex flex-col">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mb-3 sm:mb-4 neon-border" style="box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);">
+                        <i class="fas fa-user-tie w-5 h-5 sm:w-6 sm:h-6 text-black"></i>
+                    </div>
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3">Consultoría Técnica</h3>
+                    <p class="text-gray-300 mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed flex-grow">
+                        Asesoramiento experto en arquitectura, tecnologías y mejores prácticas.
+                    </p>
+                    <ul class="text-xs text-gray-300 space-y-1">
+                        <li class="flex items-center"><span class="text-green-400 mr-2 text-sm">✓</span> Arquitectura</li>
+                        <li class="flex items-center"><span class="text-green-400 mr-2 text-sm">✓</span> Code Review</li>
+                        <li class="flex items-center"><span class="text-green-400 mr-2 text-sm">✓</span> Optimización</li>
+                    </ul>
+                </div>
+
+                <div class="neon-border rounded-xl p-4 sm:p-6 card-hover fade-in bg-black/30 backdrop-blur-sm min-h-[280px] sm:min-h-[320px] flex flex-col">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-pink-500 to-rose-500 rounded-lg flex items-center justify-center mb-3 sm:mb-4 neon-border" style="box-shadow: 0 0 15px rgba(236, 72, 153, 0.4);">
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3">UI/UX Design</h3>
+                    <p class="text-gray-300 mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed flex-grow">
+                        Diseño de interfaces intuitivas y experiencias de usuario excepcionales.
+                    </p>
+                    <ul class="text-xs text-gray-300 space-y-1">
+                        <li class="flex items-center"><span class="text-green-400 mr-2 text-sm">✓</span> Prototipado</li>
+                        <li class="flex items-center"><span class="text-green-400 mr-2 text-sm">✓</span> Wireframes</li>
+                        <li class="flex items-center"><span class="text-green-400 mr-2 text-sm">✓</span> Testing UX</li>
+                    </ul>
+                </div>
+
+                <div class="neon-border rounded-xl p-4 sm:p-6 card-hover fade-in bg-black/30 backdrop-blur-sm min-h-[280px] sm:min-h-[320px] flex flex-col">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center mb-3 sm:mb-4 neon-border" style="box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);">
+                        <i class="fas fa-tools w-5 h-5 sm:w-6 sm:h-6 text-black"></i>
+                    </div>
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3">Mantenimiento Web</h3>
+                    <p class="text-gray-300 mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed flex-grow">
+                        Soporte continuo, actualizaciones de seguridad y optimización de rendimiento.
+                    </p>
+                    <ul class="text-xs text-gray-300 space-y-1">
+                        <li class="flex items-center"><span class="text-green-400 mr-2 text-sm">✓</span> Actualizaciones</li>
+                        <li class="flex items-center"><span class="text-green-400 mr-2 text-sm">✓</span> Seguridad</li>
+                        <li class="flex items-center"><span class="text-green-400 mr-2 text-sm">✓</span> Soporte 24/7</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-12 sm:py-16 lg:py-20 bg-black">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-8 sm:mb-12 lg:mb-16 fade-in">
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-6 relative">
+                    <span class="cyber-title-clean">CONTÁCTAME</span>
+                </h2>
+                <p class="text-sm sm:text-base text-gray-300 mt-4 sm:mt-6 max-w-2xl mx-auto">
+                    ¿Tienes un proyecto en mente? Me encantaría escuchar tus ideas y ayudarte a hacerlas realidad
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
+                <!-- Información de Contacto -->
+                <div class="fade-in">
+                    <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-6 sm:mb-8">Información de Contacto</h3>
+                    
+                    <div class="space-y-4 sm:space-y-6">
+                        <div class="flex items-center p-4 sm:p-6 neon-border rounded-xl card-hover bg-black/30">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white text-sm sm:text-base">Email</h4>
+                                <p class="text-gray-300 text-xs sm:text-sm">El formulario de contacto esta directamente enlazado a mi correo.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center p-4 sm:p-6 neon-border rounded-xl card-hover bg-black/30">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white text-sm sm:text-base">Teléfono</h4>
+                                <p class="text-gray-300 text-xs sm:text-sm">Prefiero no exponerlo.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center p-4 sm:p-6 neon-border rounded-xl card-hover bg-black/30">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white text-sm sm:text-base">Ubicación</h4>
+                                <p class="text-gray-300 text-xs sm:text-sm">Region Metropolitana, Santiago - CHILE</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 sm:mt-8">
+                        <h4 class="font-semibold text-white mb-3 sm:mb-4 text-sm sm:text-base">Sígueme en Redes Sociales</h4>
+                        <div class="flex space-x-3 sm:space-x-4">
+                            <a href="#" class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white hover:bg-blue-700 transition-colors neon-border">
+                                <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-800 rounded-lg flex items-center justify-center text-white hover:bg-blue-900 transition-colors neon-border">
+                                <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="w-10 h-10 sm:w-12 sm:h-12 bg-gray-800 rounded-lg flex items-center justify-center text-white hover:bg-gray-900 transition-colors neon-border">
+                                <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario de Contacto -->
+                <div class="fade-in">
+                    <div class="neon-border rounded-2xl p-4 sm:p-6 lg:p-8 bg-black/30 backdrop-blur-sm">
+                        <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-6 sm:mb-8">Envíame un Mensaje</h3>
+                        
+                        <form id="contact-form" class="space-y-4 sm:space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                                <div>
+                                    <label for="nombre" class="block text-xs sm:text-sm font-semibold text-gray-300 mb-2">Nombre</label>
+                                    <input type="text" id="nombre" name="nombre" required 
+                                           class="w-full px-3 py-2 sm:px-4 sm:py-3 bg-black/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-transparent transition-colors text-white text-sm sm:text-base">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-xs sm:text-sm font-semibold text-gray-300 mb-2">Email</label>
+                                    <input type="email" id="email" name="email" required 
+                                           class="w-full px-3 py-2 sm:px-4 sm:py-3 bg-black/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-transparent transition-colors text-white text-sm sm:text-base">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="proyecto" class="block text-xs sm:text-sm font-semibold text-gray-300 mb-2">Proyecto</label>
+                                <input type="text" id="proyecto" name="proyecto" required 
+                                       class="w-full px-3 py-2 sm:px-4 sm:py-3 bg-black/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-transparent transition-colors text-white text-sm sm:text-base">
+                            </div>
+                            
+                            <div>
+                                <label for="mensaje" class="block text-xs sm:text-sm font-semibold text-gray-300 mb-2">Mensaje</label>
+                                <textarea id="mensaje" name="mensaje" rows="4" required 
+                                          class="w-full px-3 py-2 sm:px-4 sm:py-3 bg-black/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-transparent transition-colors resize-none text-white text-sm sm:text-base"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full cyber-button text-sm sm:text-base">
+                                Enviar Mensaje
+                            </button>
+                        </form>
+                        
+                        <div id="form-message" class="mt-4 p-4 rounded-lg hidden"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="fixed bottom-6 right-6 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center text-white shadow-lg transform translate-y-16 opacity-0 transition-all duration-300 z-50 neon-border hover:scale-110 active:scale-95" style="box-shadow: 0 0 20px rgba(34, 197, 94, 0.6), 0 0 40px rgba(34, 197, 94, 0.3), 0 4px 15px rgba(0, 0, 0, 0.3);">
+        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <!-- Footer -->
+    <footer class="text-white py-8 sm:py-10 lg:py-12" style="background-color: #080808;">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center">
+                <div class="text-2xl sm:text-3xl font-bold text-white neon-glow mb-3 sm:mb-4">
+                    &lt;MI PORTAFOLIO/&gt;
+                </div>
+                <p class="text-gray-400 mb-4 sm:mb-6 text-sm sm:text-base">
+                    Creando el futuro con código
+                </p>
+                <div class="flex flex-wrap justify-center gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
+                    <a href="#inicio" class="text-gray-400 hover:text-green-400 transition-colors text-sm sm:text-base">Inicio</a>
+                    <a href="#sobre-mi" class="text-gray-400 hover:text-green-400 transition-colors text-sm sm:text-base">Sobre Mí</a>
+                    <a href="#habilidades" class="text-gray-400 hover:text-green-400 transition-colors text-sm sm:text-base">Habilidades</a>
+                    <a href="#servicios" class="text-gray-400 hover:text-green-400 transition-colors text-sm sm:text-base">Servicios</a>
+                    <a href="#contacto" class="text-gray-400 hover:text-green-400 transition-colors text-sm sm:text-base">Contacto</a>
+                </div>
+                <div class="border-t border-gray-700 pt-6 sm:pt-8">
+                    <p class="text-gray-400 mb-2 text-xs sm:text-sm">
+                        © 2025 MI PORTAFOLIO. Todos los derechos reservados.
+                    </p>
+                    <p class="text-green-400 text-xs sm:text-sm font-mono">
+                        Creado por Eduardo Martínez - 2025
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling para los enlaces de navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Toggle del menú móvil
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuClose = document.getElementById('menu-close');
+        
+        // Abrir menú
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll del body
+        });
+        
+        // Cerrar menú con botón X
+        menuClose.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Restaurar scroll del body
+        });
+        
+        // Cerrar menú al hacer click en un enlace
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a[href^="#"]');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = 'auto'; // Restaurar scroll del body
+            });
+        });
+
+        // Animación de fade-in al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+
+
+        // Animación de las barras de habilidades
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const skillBars = entry.target.querySelectorAll('.skill-bar');
+                    skillBars.forEach(bar => {
+                        const width = bar.getAttribute('data-width');
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 500);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('#habilidades .fade-in').forEach(el => {
+            skillObserver.observe(el);
+        });
+
+
+
+        // Inicializar EmailJS
+        (function() {
+            emailjs.init("30pzfUjPN_jin6vw3");
+        })();
+
+        // Funcionalidad de scroll suave para el botón "Iniciar Proyecto"
+        document.getElementById('iniciar-proyecto-btn').addEventListener('click', function() {
+            const contactoSection = document.getElementById('contacto');
+            if (contactoSection) {
+                contactoSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+
+        // Manejo del formulario de contacto con EmailJS
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const messageDiv = document.getElementById('form-message');
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+            
+            // Mostrar estado de carga
+            submitButton.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Enviando...
+            `;
+            submitButton.disabled = true;
+            
+            // Obtener datos del formulario
+            const formData = {
+                from_name: document.getElementById('nombre').value,
+                from_email: document.getElementById('email').value,
+                project: document.getElementById('proyecto').value,
+                message: document.getElementById('mensaje').value,
+                name: document.getElementById('nombre').value, // Para el campo From Name del template
+                email: document.getElementById('email').value, // Para el campo Reply To del template
+                time: new Date().toLocaleString() // Para el campo {{time}} del template
+            };
+            
+            // Debug: mostrar en consola qué datos se envían
+            console.log('Datos del formulario:', formData);
+            
+            // Enviar email usando EmailJS
+            emailjs.send('service_kxgkt3y', 'template_vrcnnb8', formData)
+                .then(function(response) {
+                    // Éxito
+                    messageDiv.className = 'mt-4 p-4 rounded-lg bg-green-900/20 border border-green-400/30';
+                    messageDiv.innerHTML = `
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-green-400 font-semibold">¡Mensaje enviado con éxito!</span>
+                        </div>
+                        <p class="text-green-300 text-sm mt-1">Gracias por contactarme. Te responderé pronto.</p>
+                    `;
+                    messageDiv.classList.remove('hidden');
+                    
+                    // Limpiar el formulario
+                    document.getElementById('contact-form').reset();
+                    
+                    // Ocultar el mensaje después de 5 segundos
+                    setTimeout(() => {
+                        messageDiv.classList.add('hidden');
+                    }, 5000);
+                })
+                .catch(function(error) {
+                    // Error
+                    messageDiv.className = 'mt-4 p-4 rounded-lg bg-red-900/20 border border-red-400/30';
+                    messageDiv.innerHTML = `
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-red-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-red-400 font-semibold">Error al enviar el mensaje</span>
+                        </div>
+                        <p class="text-red-300 text-sm mt-1">Por favor, intenta nuevamente más tarde.</p>
+                    `;
+                    messageDiv.classList.remove('hidden');
+                    
+                    // Ocultar el mensaje después de 5 segundos
+                    setTimeout(() => {
+                        messageDiv.classList.add('hidden');
+                    }, 5000);
+                })
+                .finally(function() {
+                    // Restaurar el botón
+                    submitButton.innerHTML = originalButtonText;
+                    submitButton.disabled = false;
+                });
+        });
+
+        // Scroll to top button functionality
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Navegación activa y efecto glass
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            // Show/hide scroll to top button
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.remove('translate-y-16', 'opacity-0');
+                scrollToTopBtn.classList.add('translate-y-0', 'opacity-100');
+            } else {
+                scrollToTopBtn.classList.remove('translate-y-0', 'opacity-100');
+                scrollToTopBtn.classList.add('translate-y-16', 'opacity-0');
+            }
+            
+            // Efecto glass en el navbar
+            if (window.scrollY > 100) {
+                navbar.classList.remove('bg-black/95', 'border-gray-800');
+                navbar.classList.add('bg-black/5', 'backdrop-blur-xl', 'border-green-400/5');
+                navbar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 255, 127, 0.02)';
+            } else {
+                navbar.classList.remove('bg-black/5', 'backdrop-blur-xl', 'border-green-400/5');
+                navbar.classList.add('bg-black/95', 'border-gray-800');
+                navbar.style.boxShadow = '';
+            }
+            
+            // Navegación activa
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-green-400');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('text-green-400');
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96c1080d8061e9a5',t:'MTc1NDY3NzI2NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
